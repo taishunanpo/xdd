@@ -35,6 +35,12 @@ type StepThree struct {
 	Message string `json:"message"`
 }
 
+type Result struct {
+	Code    int         `json:"code"`
+	Data    interface{} `json:"data"`
+	Message string      `json:"message"`
+}
+
 var JdCookieRunners sync.Map
 var jdua = models.GetUserAgent
 
@@ -321,6 +327,66 @@ func FetchJdCookieValue(key string, cookies string) string {
 		return match[1]
 	} else {
 		return ""
+	}
+}
+
+func (c *LoginController) IsAdmin() {
+	pin := c.GetString("pin")
+	if pin == "" {
+		c.Ctx.Redirect(302, "/")
+		c.StopRun()
+	} else {
+		if strings.EqualFold(models.Config.Master, pin) {
+			c.SetSession("pin", pin)
+			c.Ctx.WriteString("登录")
+		}
+	}
+}
+func (c *LoginController) CkLogin() {
+	pin := c.GetString("pin")
+	key := c.GetString("key")
+	//qq, _ := c.GetInt("qq")
+	//bz := c.GetString("bz")
+	//push := c.GetString("push")
+	logs.Info(pin)
+	logs.Info(key)
+	c.Ctx.WriteString("添加成功")
+}
+
+func (c *LoginController) SMSLogin() {
+	token := c.GetString("token")
+	cookie := c.GetString("ck")
+	//key := c.GetString("key")
+	//qq, _ := c.GetInt("qq")
+	//bz := c.GetString("bz")
+	//push := c.GetString("push")
+	logs.Info(cookie)
+	//logs.Info(key)
+
+	if token == models.Config.ApiToken {
+		result := Result{
+			Data:    "null",
+			Code:    200,
+			Message: "添加成功",
+		}
+		jsons, errs := json.Marshal(result) //转换成JSON返回的是byte[]
+		if errs != nil {
+			fmt.Println(errs.Error())
+		}
+		c.Ctx.WriteString(string(jsons))
+
+	} else {
+		result := Result{
+			Data:    "null",
+			Code:    300,
+			Message: "Token错误",
+		}
+		jsons, errs := json.Marshal(result) //转换成JSON返回的是byte[]
+		if errs != nil {
+			fmt.Println(errs.Error())
+		}
+		c.Ctx.WriteString(string(jsons))
+
 	}
 }
 
