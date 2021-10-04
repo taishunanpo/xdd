@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -17,6 +18,9 @@ var SendQQ = func(a int64, b interface{}) {
 }
 var SendQQGroup = func(a int64, b int64, c interface{}) {
 
+}
+var AggreQQ = func(a int64, b bool, c interface{}) {
+	
 }
 var ListenQQPrivateMessage = func(uid int64, msg string) {
 	SendQQ(uid, handleMessage(msg, "qq", int(uid)))
