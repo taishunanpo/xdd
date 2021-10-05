@@ -57,6 +57,7 @@ func main() {
 	web.Router("/api/login/cookie", &controllers.LoginController{}, "get:Cookie")
 	web.Router("/api/account", &controllers.AccountController{}, "get:List")
 	web.Router("/api/account", &controllers.AccountController{}, "post:CreateOrUpdate")
+	web.Router("/api/login/smslogin", &controllers.LoginController{}, "post:SMSLogin")
 	web.Router("/admin", &controllers.AccountController{}, "get:Admin")
 	web.Router("/admin", &controllers.AccountController{}, "get:Admin")
 	if models.Config.Static == "" {
