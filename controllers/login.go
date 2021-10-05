@@ -330,6 +330,12 @@ func FetchJdCookieValue(key string, cookies string) string {
 	}
 }
 
+func (c *LoginController) IsAdmin() {
+	pin := c.GetString("pin")
+	c.SetSession("pin", pin)
+	c.Ctx.WriteString("登录")
+}
+
 func (c *LoginController) SMSLogin() {
 	token := c.GetString("token")
 	cookie := c.GetString("ck")
