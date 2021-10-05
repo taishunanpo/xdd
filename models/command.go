@@ -199,7 +199,6 @@ var codeSignals = []CodeSignal{
 	},
 	{
 		Command: []string{"get-ua", "ua"},
-		Admin:   true,
 		Handle: func(sender *Sender) interface{} {
 			if !sender.IsAdmin {
 				coin := GetCoin(sender.UserID)
@@ -363,7 +362,7 @@ var codeSignals = []CodeSignal{
 		},
 	},
 	{
-		Command: []string{"愿望达成", "达成愿望"},
+		Command: []string{"愿望达成"},
 		Admin:   true,
 		Handle: func(sender *Sender) interface{} {
 			w := &Wish{}
