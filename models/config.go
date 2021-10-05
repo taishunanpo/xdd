@@ -98,6 +98,9 @@ func initConfig() {
 	if Config.Npm == "" {
 		Config.Npm = "npm"
 	}
+	if Config.ApiToken == "" {
+		Config.ApiToken = utils.RandomString(17)
+	}
 	if Config.Node == "" {
 		Config.Node = "node"
 	}
