@@ -35,6 +35,12 @@ type StepThree struct {
 	Message string `json:"message"`
 }
 
+type Result struct {
+	Code    int         `json:"code"`
+	Data    interface{} `json:"data"`
+	Message string      `json:"message"`
+}
+
 var JdCookieRunners sync.Map
 var jdua = models.GetUserAgent
 
