@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"github.com/beego/beego/v2/core/logs"
 	"net/http"
 	"strconv"
 	"strings"
@@ -113,10 +114,12 @@ func (c *BaseController) Logined() *BaseController {
 		return c
 	}
 	if v := c.GetSession("pin"); v == nil {
+		logs.Warn("test")
 		c.Ctx.Redirect(302, "/")
 		c.StopRun()
 	} else {
 		c.PtPin = v.(string)
+		logs.Warn(v.(string))
 		if strings.Contains(models.Config.Master, v.(string)) {
 			c.Master = true
 		}
