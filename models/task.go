@@ -21,7 +21,7 @@ type Task struct {
 	Cron    string
 	Path    string
 	Enable  string
-	Mode    string //silent push real
+	Mode    string
 	Word    string
 	Name    string
 	Timeout int
