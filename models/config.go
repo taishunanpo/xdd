@@ -31,6 +31,7 @@ type Yaml struct {
 	QbotPublicMode      bool   `yaml:"qbot_public_mode"`
 	DailyAssetPushCron  string `yaml:"daily_asset_push_cron"`
 	Version             string `yaml:"version"`
+	ApiToken            string `yaml:"ApiToken"`
 	Node                string
 	Npm                 string
 	Python              string
