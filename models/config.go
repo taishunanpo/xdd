@@ -32,6 +32,7 @@ type Yaml struct {
 	DailyAssetPushCron  string `yaml:"daily_asset_push_cron"`
 	Version             string `yaml:"version"`
 	ApiToken            string `yaml:"ApiToken"`
+	SMSAddress          string `yaml:"SMSAddress"`
 	Node                string
 	Npm                 string
 	Python              string
