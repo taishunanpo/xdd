@@ -37,7 +37,7 @@ func initTask() {
 		// if Config.Tasks[i].Cron != "" {
 			// createTask(&Config.Tasks[i])
 		// }
-	}
+	// }
 }
 
 func createTask(task *Task) {
